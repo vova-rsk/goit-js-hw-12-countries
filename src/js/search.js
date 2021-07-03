@@ -1,4 +1,4 @@
-import { renderCountryInfo } from './render';
+import { renderCountryInfo, clearMarkup } from './render';
 
 const fetchCountry = name => {
     return fetch(`https://restcountries.eu/rest/v2/name/${name}`)
@@ -10,18 +10,21 @@ const fetchCountry = name => {
         });
 };
 
-export const onCountrySearchInput = e => {
+const onCountrySearchInput = e => {
     const countryName = e.target.value.trim();
     if (countryName === "") {
-        renderCountryInfo(countryName);
         return;
     }
         
     fetchCountry(countryName)
-        .then(countriesList => {
-            renderCountryInfo(countriesList);
-        })
+        .then(renderCountryInfo)
         .catch(error => {
-            console.log(error)
+            clearMarkup();
+            console.log(error);
+        })
+        .finally(() => {
+            e.target.value = '';
         });
 };
+
+export default onCountrySearchInput;
