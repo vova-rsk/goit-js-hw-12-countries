@@ -12,3 +12,49 @@ input {
 .search-result {
   margin-left: 30px;
 }
+
+.container {
+  display: flex;
+  max-width: 700px;
+}
+
+.country__name {
+  max-width: 700px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.country__info {
+  min-width: 240px;
+}
+
+p,
+.country__languages-list,
+.countries-list {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+span {
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.country__language-item,
+.countries-list__item {
+  font-weight: 400;
+
+  &:not(:first-child) {
+    margin-top: 4px;
+  }
+}
+
+.thumb {
+  width: 400px;
+  height: 300px;
+}
