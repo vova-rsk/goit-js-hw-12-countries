@@ -1,5 +1,6 @@
 import debounce from 'lodash.debounce';
 import 'modern-normalize';
+import '@pnotify/core/dist/BrightTheme.css';
 import './sass/main.scss';
 import { onCountrySearchInput } from './js/search';
 
