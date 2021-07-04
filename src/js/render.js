@@ -4,16 +4,16 @@ import refs from './refs';
 import notice from './notification';
 
 export const renderCountryInfo = data => {
-    refs.outputRef.innerHTML = (data.length === 1)
-        ? templateCountryInfo(...data)
-        : templateCountriesList(data);    
-    
-    if (data.length >= 10) {
+    if (data.length === 1) {
+        refs.outputRef.innerHTML = templateCountryInfo(...data);
+    } else if (data.length <= 10) {
+        refs.outputRef.innerHTML = templateCountriesList(data);
+    } else {
+        clearMarkup();
         notice("Too many matches found. Please enter a more specific query!");
     }
 };
 
 export const clearMarkup = () => {
     refs.outputRef.innerHTML = '';
-    notice("No matches found. Please enter a new query!");
 };

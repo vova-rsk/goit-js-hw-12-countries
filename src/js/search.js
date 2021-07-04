@@ -1,14 +1,7 @@
 import { renderCountryInfo, clearMarkup } from './render';
+import fetchCountries from './fetchCountries';
+import notice from './notification';
 
-const fetchCountry = name => {
-    return fetch(`https://restcountries.eu/rest/v2/name/${name}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(response.status);
-            }
-            return response.json();
-        });
-};
 
 const onCountrySearchInput = e => {
     const countryName = e.target.value.trim();
@@ -16,11 +9,11 @@ const onCountrySearchInput = e => {
         return;
     }
         
-    fetchCountry(countryName)
+    fetchCountries(countryName)
         .then(renderCountryInfo)
-        .catch(error => {
+        .catch(() => {
             clearMarkup();
-            console.log(error);
+            notice("No matches found. Please enter a new query!");
         })
         .finally(() => {
             e.target.value = '';
