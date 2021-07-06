@@ -15,7 +15,7 @@ export default function notice(message) {
     type: "error",
     stack: stackBottomModal,
     hide: true,
-    delay: 2000,
+    delay: 500,
     closer: false,
     sticker: false
   });
