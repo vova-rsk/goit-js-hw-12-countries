@@ -14,10 +14,10 @@ const onCountrySearchInput = e => {
         .catch(() => {
             clearMarkup();
             notice("No matches found. Please enter a new query!");
-        })
-        .finally(() => {
-            e.target.value = '';
         });
+        // .finally(() => {
+        //     e.target.value = '';
+        // });
 };
 
 export default onCountrySearchInput;
